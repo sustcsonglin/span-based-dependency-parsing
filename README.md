@@ -1,5 +1,5 @@
 # span-based-dependency-parsing
-Source code of "[Headed Span-Based Projective Dependency Parsing](http://arxiv.org/abs/2108.04750)" and "[Combining (second-order) graph-based and headed span-based projective dependency parsing]"(https://arxiv.org/pdf/2108.05838.pdf)"
+Source code of "[Headed Span-Based Projective Dependency Parsing](http://arxiv.org/abs/2108.04750)" and "[Combining (second-order) graph-based and headed span-based projective dependency parsing](https://arxiv.org/pdf/2108.05838.pdf)"
 
 ## Setup
 prepare environment 
