@@ -1,0 +1,40 @@
+
+# @package _global_
+
+
+trainer:
+  min_epochs: 1
+  max_epochs: 10
+
+
+# 16*250=4000
+accumulation: 16
+
+datamodule:
+  max_tokens: 250
+  max_tokens_test: 250
+
+# save checkpoints of the model.
+checkpoint: False
+
+model:
+  embeder:
+    finetune: True
+
+optim:
+  only_embeder: True
+
+
+callbacks:
+  transformer_scheduler:
+    _target_: src.callbacks.transformer_scheduler.TransformerLrScheduler
+    warmup: ${optim.warmup}
+
+  pretty_progress_bar:
+    _target_: src.callbacks.progressbar.PrettyProgressBar
+    refresh_rate: 1
+    process_position: 0
+
+
+
+

@@ -1,0 +1,69 @@
+# @package _global_
+defaults:
+  - _base
+
+datamodule:
+  target:
+    _target_: src.datamodule.dep_data.DepUD
+  abbreviation:
+    'no': no_bokmaal
+    bg: bg_btb
+    ca: ca_ancora
+    cs: cs_pdt
+    de: de_gsd
+    en: en_ewt
+    es: es_ancora
+    fr: fr_gsd
+    it: it_isdt
+    'nl': nl_alpino
+    ro: ro_rrt
+    ru: ru_syntagrus
+    # extra languages
+    ta: ta_ttb
+    ko: ko_gsd
+    zh: zh_gsd
+
+  ud_lan: bg
+  ud_name: "${.abbreviation.${.ud_lan}}"
+  ud_ver: 2.2
+  name: "ud2.2_${.ud_lan}"
+  # Do not ignore punctuations while evaluating
+  ignore_punct: True
+  max_len: 200
+  train_dep: "${root}/data/ud${.ud_ver}/UD_${.ud_mapping.${.ud_name}}/${.ud_name}-ud-train.conllu"
+  dev_dep: "${root}/data/ud${.ud_ver}/UD_${.ud_mapping.${.ud_name}}/${.ud_name}-ud-dev.conllu"
+  test_dep: "${root}/data/ud${.ud_ver}/UD_${.ud_mapping.${.ud_name}}/${.ud_name}-ud-test.conllu"
+  cache: "${root}/data/ud${.ud_ver}/UD_${.ud_mapping.${.ud_name}}/${.ud_name}-ud-cache.pickle"
+  cache_bert: "${root}/data/ud${.ud_ver}/UD_${.ud_mapping.${.ud_name}}/${.ud_name}-ud-cache_bert.pickle"
+  ext_emb_path: "${root}/data/ud${.ud_ver}/fasttext/nogen/${.ud_lan}.lower.nogen.300.txt"
+  bert: "bert-base-multilingual-cased"
+  #use_bert: False
+  #use_emb: False
+  #ext_emb: ""
+  ud_mapping:
+    bg_btb: Bulgarian-BTB
+    ca_ancora: Catalan-AnCora
+    cs_pdt: Czech-PDT
+    de_gsd: German-GSD
+    en_ewt: English-EWT
+    es_ancora: Spanish-AnCora
+    fr_gsd: French-GSD
+    it_isdt: Italian-ISDT
+    nl_alpino: Dutch-Alpino
+    no_bokmaal: Norwegian-Bokmaal
+    ro_rrt: Romanian-RRT
+    ru_syntagrus: Russian-SynTagRus
+    # extra languages
+    ta_ttb : Tamil-TTB
+    ko_gsd: Korean-GSD
+    zh_gsd: Chinese-GSD
+
+model:
+  metric:
+    target:
+      _target_: src.model.metric.PseudoProjDepExternalMetric
+    write_result_to_file: True
+    lan: ${datamodule.ud_lan}
+
+
+

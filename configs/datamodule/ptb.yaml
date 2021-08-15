@@ -1,0 +1,25 @@
+# @package _global_
+defaults:
+  - _base
+
+datamodule:
+  target:
+    _target_: src.datamodule.dep_data.DepData
+  name: 'ptb'
+  train_dep: "${root}/data/train.gold.conllu"
+  dev_dep: "${root}/data/dev.gold.conllu"
+  test_dep: "${root}/data/test.gold.conllu"
+  cache: "${root}/data/ptb.dep.pickle"
+  cache_bert: "${root}/data/ptb.dep.cache_${datamodule.bert}"
+  ext_emb_path: "${root}/data/glove.6B.100d.txt"
+  ignore_punct: True
+  clean_word: True
+  bert: 'bert-large-cased'
+
+model:
+  metric:
+    target:
+      _target_: src.model.metric.AttachmentMetric
+    write_result_to_file: True
+
+

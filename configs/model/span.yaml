@@ -1,0 +1,21 @@
+# @package _global_
+
+defaults:
+  - _base
+
+model:
+  scorer:
+    use_arc: False
+    use_sib: False
+    use_span: True
+
+
+  loss:
+    target:
+      _target_: src.loss.dep_loss.Span
+    loss_type: 'mm'
+
+  name: 'span_${model.loss.loss_type}'
+
+
+

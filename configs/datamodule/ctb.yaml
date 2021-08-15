@@ -1,0 +1,33 @@
+# @package _global_
+
+defaults:
+  - _base
+
+datamodule:
+  target:
+    _target_: src.datamodule.dep_data.DepData
+
+  train_dep: "${root}/data/ctb_zhang/train.ctb.conll"
+  dev_dep: "${root}/data/ctb_zhang/dev.ctb.conll"
+  test_dep: "${root}/data/ctb_zhang/test.ctb.conll"
+
+  bert: "bert-base-chinese"
+  ignore_punct: True
+  name: 'ctb'
+
+#  ext_emb_path: ${.mapping.${.emb_type}}
+#  emb_type: sskip
+#  mapping:
+#    giga: "data/giga.100.txt"
+#    sskip: "data/sskip.chn.50"
+
+  cache: "${root}/data/ctb_zhang/ctb.dep.pickle"
+  cache_bert: "${root}/data/ctb_zhang/ctb.dep.cache_${bert}"
+
+model:
+  metric:
+    target:
+      _target_: src.model.metric.AttachmentMetric
+    write_result_to_file: True
+
+

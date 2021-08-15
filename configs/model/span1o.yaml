@@ -1,0 +1,21 @@
+# @package _global_
+
+defaults:
+  - _base
+
+model:
+  scorer:
+    use_arc: True
+    use_sib: False
+    use_span: True
+    span_scorer_type: biaffine
+
+  loss:
+    target:
+      _target_: src.loss.dep_loss.DepSpanLoss
+    loss_type: 'mm'
+
+  name: 'dep1o_span_${model.loss.loss_type}'
+
+
+
