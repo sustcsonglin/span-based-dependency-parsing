@@ -7,9 +7,9 @@ datamodule:
   target:
     _target_: src.datamodule.dep_data.DepData
 
-  train_dep: "${root}/data/ctb_zhang/train.ctb.conll"
-  dev_dep: "${root}/data/ctb_zhang/dev.ctb.conll"
-  test_dep: "${root}/data/ctb_zhang/test.ctb.conll"
+  train_dep: "${root}/data/ctb/train.ctb.conll"
+  dev_dep: "${root}/data/ctb/dev.ctb.conll"
+  test_dep: "${root}/data/ctb/test.ctb.conll"
 
   bert: "bert-base-chinese"
   ignore_punct: True
