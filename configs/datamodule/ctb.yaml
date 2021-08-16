@@ -21,8 +21,8 @@ datamodule:
 #    giga: "data/giga.100.txt"
 #    sskip: "data/sskip.chn.50"
 
-  cache: "${root}/data/ctb_zhang/ctb.dep.pickle"
-  cache_bert: "${root}/data/ctb_zhang/ctb.dep.cache_${bert}"
+  cache: "${root}/data/ctb/ctb.dep.pickle"
+  cache_bert: "${root}/data/ctb/ctb.dep.cache_${bert}"
 
 model:
   metric:
