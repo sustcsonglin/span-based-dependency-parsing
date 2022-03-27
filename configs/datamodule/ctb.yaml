@@ -14,6 +14,7 @@ datamodule:
   bert: "bert-base-chinese"
   ignore_punct: True
   name: 'ctb'
+  use_pos: True
 
 #  ext_emb_path: ${.mapping.${.emb_type}}
 #  emb_type: sskip

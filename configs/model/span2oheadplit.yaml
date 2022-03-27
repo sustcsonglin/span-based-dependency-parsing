@@ -6,7 +6,7 @@ defaults:
 model:
   scorer:
     use_arc: True
-    use_sib: False
+    use_sib: True
     use_span: True
     span_scorer_type: headsplit
 

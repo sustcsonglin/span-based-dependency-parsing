@@ -23,6 +23,7 @@ datamodule:
     ko: ko_gsd
     zh: zh_gsd
 
+  use_pos: True
   ud_lan: bg
   ud_name: "${.abbreviation.${.ud_lan}}"
   ud_ver: 2.2

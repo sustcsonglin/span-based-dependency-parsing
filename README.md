@@ -1,15 +1,16 @@
 # span-based-dependency-parsing
-Source code of "[Headed Span-Based Projective Dependency Parsing](http://arxiv.org/abs/2108.04750)" and "[Combining (second-order) graph-based and headed span-based projective dependency parsing](https://arxiv.org/pdf/2108.05838.pdf)"
+Source code of ACL2022 "[Headed-Span-Based Projective Dependency Parsing](http://arxiv.org/abs/2108.04750)" and 
+Findings of ACL2022"[Combining (second-order) graph-based and headed-span-based projective dependency parsing](https://arxiv.org/pdf/2108.05838.pdf)"
 
 ## Setup
-prepare environment 
+setup environment 
 ```
 conda create -n parsing python=3.7
 conda activate parsing
 while read requirement; do pip install $requirement; done < requirements.txt 
 ```
 
-prepare dataset:
+setup dataset:
 
 you can download the datasets I used from [link](https://mega.nz/file/jFIijLTI#b0b7550tdYVNcpGfgaXc0sk0F943lrt8D35v1SW2wbg). 
 
@@ -24,34 +25,26 @@ multirun example:
 ```
 python train.py +exp=base datamodule.ud2.2 model=b datamodule.ud_lan=de,it,en,ca,cs,es,fr,no,ru,es,nl,bg seed=0,1,2 --mutlirun
 ```
-For UD, you also need to prepare the JAVA environment for the use of MaltParser.
-
-# TODO
-- Clean code (e.g. add comments)
-- Add eval.py, now we only support training from scratch. 
-- Release pre-trained model.
+For UD, you also need to setup the JAVA environment for the use of MaltParser. 
+You need download MaltParser v1.9.2 from [link](https://www.maltparser.org/download.html). 
 
 # Contact
 Please let me know if there are any bugs. Also, feel free to contact bestsonta@gmail.com if you have any questions.
 
 # Citation
 ```
-@misc{yang2021headed,
-      title={Headed Span-Based Projective Dependency Parsing}, 
-      author={Songlin Yang and Kewei Tu},
-      year={2021},
-      eprint={2108.04750},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@inproceedings{yang-tu-2022-headed,
+  title={Headed-Span-Based Projective Dependency Parsing},
+    booktitle = "Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics",
+  author={Songlin Yang and Kewei Tu},
+  year={2022}
 }
 
-@misc{yang2021combining,
-      title={Combining (second-order) graph-based and headed span-based projective dependency parsing}, 
+@misc{yang-tu-2022-combining,
+      title={Combining (second-order) graph-based and headed-span-based projective dependency parsing}, 
       author={Songlin Yang and Kewei Tu},
-      year={2021},
-      eprint={2108.05838},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+      year={2022},
+    booktitle = "Findings of ACL",
 }
 ```
 
