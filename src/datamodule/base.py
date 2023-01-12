@@ -226,6 +226,7 @@ class DataModuleBase(pl.LightningDataModule):
         return datasets, fields
 
 
+
     def _add_bert_to_field(self, datasets, fields):
 
         log.info(f"Use bert:{self.conf.bert}")
@@ -245,8 +246,14 @@ class DataModuleBase(pl.LightningDataModule):
                 cache_bert = pickle.load(f)
             BERT = cache_bert['bert']
 
+        from transformers import AutoTokenizer
+        tokenizer = AutoTokenizer.from_pretrained(self.conf.bert)
+        pad_id = tokenizer.pad_token_id
+
+        # important
         for name, d in datasets.items():
-            d.add_field('bert', cache_bert[name])
+            d.add_field('bert', cache_bert[name], )
+            d.set_pad_val('bert', pad_id)
 
         fields['bert'] = BERT
         fields['bert_name'] = self.conf.bert
